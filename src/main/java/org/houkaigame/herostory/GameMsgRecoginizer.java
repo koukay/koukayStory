@@ -1,8 +1,9 @@
-package org.houkaihame.herostory;
+package org.houkaigame.herostory;
 
 import com.google.protobuf.GeneratedMessageV3;
 import com.google.protobuf.Message;
-import org.houkaihame.herostory.msg.GameMsgProtocol;
+
+import org.houkaigame.herostory.msg.GameMsgProtocol;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

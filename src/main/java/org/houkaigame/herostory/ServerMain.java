@@ -1,4 +1,4 @@
-package org.houkaihame.herostory;
+package org.houkaigame.herostory;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -10,7 +10,8 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
-import org.houkaihame.herostory.cmdHandler.CmdHandlerFactory;
+
+import org.houkaigame.herostory.cmdHandler.CmdHandlerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

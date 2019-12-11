@@ -1,4 +1,4 @@
-package org.houkaihame.herostory.model;
+package org.houkaigame.herostory.model;
 
 import java.util.Collection;
 import java.util.HashMap;

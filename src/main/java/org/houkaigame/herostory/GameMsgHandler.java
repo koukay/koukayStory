@@ -1,12 +1,13 @@
-package org.houkaihame.herostory;
+package org.houkaigame.herostory;
 
 import com.google.protobuf.GeneratedMessageV3;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.AttributeKey;
-import org.houkaihame.herostory.cmdHandler.*;
-import org.houkaihame.herostory.model.UserManager;
-import org.houkaihame.herostory.msg.GameMsgProtocol;
+
+import org.houkaigame.herostory.cmdHandler.*;
+import org.houkaigame.herostory.model.UserManager;
+import org.houkaigame.herostory.msg.GameMsgProtocol;
 
 /**
  * 自定义消息处理器
@@ -52,7 +53,8 @@ public class GameMsgHandler extends SimpleChannelInboundHandler<Object> {
      * @param <TCmd>
      * @return
      */
-    static  private <TCmd extends GeneratedMessageV3> TCmd cast(Object msg){
+    @SuppressWarnings("unchecked")
+	static  private <TCmd extends GeneratedMessageV3> TCmd cast(Object msg){
         if (null == msg){
             return null;
         }else {

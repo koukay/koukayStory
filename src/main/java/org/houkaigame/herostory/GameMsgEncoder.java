@@ -1,4 +1,4 @@
-package org.houkaihame.herostory;
+package org.houkaigame.herostory;
 
 import com.google.protobuf.GeneratedMessageV3;
 import io.netty.buffer.ByteBuf;
@@ -6,7 +6,6 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelOutboundHandlerAdapter;
 import io.netty.channel.ChannelPromise;
 import io.netty.handler.codec.http.websocketx.BinaryWebSocketFrame;
-import org.houkaihame.herostory.msg.GameMsgProtocol;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 /**

@@ -1,10 +1,9 @@
-package org.houkaihame.herostory;
+package org.houkaigame.herostory;
 
 import io.netty.channel.Channel;
 import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.util.concurrent.GlobalEventExecutor;
-import org.houkaihame.herostory.msg.GameMsgProtocol;
 
 public final class Broadcast {
     //客户端信道数组,一定要使用static,否则无发实现群发

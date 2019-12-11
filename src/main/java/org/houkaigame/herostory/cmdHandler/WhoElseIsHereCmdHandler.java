@@ -1,10 +1,11 @@
-package org.houkaihame.herostory.cmdHandler;
+package org.houkaigame.herostory.cmdHandler;
 
 import com.google.protobuf.GeneratedMessageV3;
 import io.netty.channel.ChannelHandlerContext;
-import org.houkaihame.herostory.model.User;
-import org.houkaihame.herostory.model.UserManager;
-import org.houkaihame.herostory.msg.GameMsgProtocol;
+
+import org.houkaigame.herostory.model.User;
+import org.houkaigame.herostory.model.UserManager;
+import org.houkaigame.herostory.msg.GameMsgProtocol;
 @CmdHandler(name =GameMsgProtocol.WhoElseIsHereCmd.class)
 public final class WhoElseIsHereCmdHandler implements ICmdHandler<GameMsgProtocol.WhoElseIsHereCmd> {
 

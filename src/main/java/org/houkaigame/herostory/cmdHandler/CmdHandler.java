@@ -1,4 +1,4 @@
-package org.houkaihame.herostory.cmdHandler;
+package org.houkaigame.herostory.cmdHandler;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

@@ -1,4 +1,4 @@
-package org.houkaihame.herostory.cmdHandler;
+package org.houkaigame.herostory.cmdHandler;
 
 import com.google.protobuf.GeneratedMessageV3;
 import io.netty.channel.ChannelHandlerContext;

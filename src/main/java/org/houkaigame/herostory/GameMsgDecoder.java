@@ -1,4 +1,4 @@
-package org.houkaihame.herostory;
+package org.houkaigame.herostory;
 
 import com.google.protobuf.Message;
 import io.netty.buffer.ByteBuf;
