@@ -12,6 +12,7 @@ import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 
 import org.houkaigame.herostory.cmdHandler.CmdHandlerFactory;
+import org.houkaigame.herostory.cmdHandler.UserAttkCmdHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
