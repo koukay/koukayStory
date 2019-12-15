@@ -30,6 +30,7 @@ public final class GameMsgRecoginizer {
 
     }
     static  public void init(){
+        LOGGER.info("==== 完成 MsgBody 和 MsgCode 的关联 ====");
         Class<?>[] innerClazzArray=GameMsgProtocol.class.getDeclaredClasses();
         for(Class<?> innerClazz: innerClazzArray ){
             if (!GeneratedMessageV3.class.isAssignableFrom(innerClazz)){
@@ -47,7 +48,7 @@ public final class GameMsgRecoginizer {
                 }
                 try {
                     Object returnObj = innerClazz.getDeclaredMethod("getDefaultInstance").invoke(innerClazz);
-                    LOGGER.info("{}<==>{}",innerClazz.getName(),msgCode.getNumber());
+                    LOGGER.info("关联 {} <==> {}",innerClazz.getName(),msgCode.getNumber());
                     _msgCodeAndMsgBodyMap.put(msgCode.getNumber(), (GeneratedMessageV3) returnObj);
                     _msgClazzAndMsgCodeMap.put(innerClazz,msgCode.getNumber());
                 }catch (Exception e){

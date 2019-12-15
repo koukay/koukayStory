@@ -21,10 +21,12 @@ public class ServerMain {
     public static void main(String[] args) {
         CmdHandlerFactory.init();
         GameMsgRecoginizer.init();
+
         //处理客户端连接线程池
         EventLoopGroup bossGroup = new NioEventLoopGroup();// 拉客的, 也就是故事中的美女
         //处理客户端连接线程池
         EventLoopGroup workerGroup=new NioEventLoopGroup();// 干活的, 也就是故事中的服务生
+
         ServerBootstrap b = new ServerBootstrap();
         b.group(bossGroup,workerGroup);
         //通过NioServerSocketChannel连接netty
