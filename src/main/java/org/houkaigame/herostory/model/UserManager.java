@@ -14,42 +14,45 @@ public final class UserManager {
     static  public   final Map<Integer, User> _userMap=new HashMap<>();
 
     /**
-     * 私有化默认构造器
+     * 私有化类默认构造器
      */
-    private UserManager(){
-
+    private UserManager() {
     }
 
     /**
      * 添加用户
-     * @param user
+     *
+     * @param user 新用户
      */
     static  public void addUser(User user){
         if (null !=user) _userMap.put(user.userId, user);
     }
+
     /**
-     *根据用户ID移除用户
-     * @param userId
-     * @return
+     * 根据用户 Id 移除用户
+     *
+     * @param userId 用户 Id
      */
-    static  public void removeUserById(int userId){
+    static public void removeUserById(int userId) {
         _userMap.remove(userId);
     }
 
     /**
-     * 用户列表
-     * @return
+     * 列表用户
+     *
+     * @return 用户列表
      */
-    static public Collection<User> listUser(){
+    static public Collection<User> listUser() {
         return _userMap.values();
     }
 
     /**
-     * 根据ID获取用户
-     * @param userId
+     * 根据 Id 获取用户
+     *
+     * @param userId 用户 Id
      * @return 用户对象
      */
-    public static User getUserById(int userId) {
+    static public User getUserById(int userId) {
         return _userMap.get(userId);
     }
 }

@@ -17,7 +17,7 @@ public final class Broadcast {
      * @param channel
      */
     static public void addChannel(Channel channel){
-        _channelGroup.add(channel);
+        if (null != channel)_channelGroup.add(channel);
     }
 
     /**
@@ -25,7 +25,7 @@ public final class Broadcast {
      * @param channel
      */
     static public void removeChannel(Channel channel){
-        _channelGroup.remove(channel);
+        if (null != channel) _channelGroup.remove(channel);
     }
 
     /**
@@ -33,6 +33,6 @@ public final class Broadcast {
      * @param msg
      */
     static public void broadcast(Object msg){
-        _channelGroup.writeAndFlush(msg);
+        if (null == msg) _channelGroup.writeAndFlush(msg);
     }
 }
