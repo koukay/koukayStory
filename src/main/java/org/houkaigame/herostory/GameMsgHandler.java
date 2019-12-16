@@ -25,7 +25,7 @@ public class GameMsgHandler extends SimpleChannelInboundHandler<Object> {
         super.channelActive(ctx);
 
         // 添加客户端信道
-        Broadcast.addChannel(ctx.channel());
+        Broadcaster.addChannel(ctx.channel());
     }
 
     @Override
@@ -33,7 +33,7 @@ public class GameMsgHandler extends SimpleChannelInboundHandler<Object> {
         super.handlerRemoved(ctx);
 
         // 移除客户端信道
-        Broadcast.removeChannel(ctx.channel());
+        Broadcaster.removeChannel(ctx.channel());
 
         // 拿到用户 Id
         Integer userId = (Integer) ctx.channel().attr(AttributeKey.valueOf("userId")).get();
@@ -49,7 +49,7 @@ public class GameMsgHandler extends SimpleChannelInboundHandler<Object> {
         resultBuilder.setQuitUserId(userId);
 
         GameMsgProtocol.UserQuitResult newResult = resultBuilder.build();
-        Broadcast.broadcast(newResult);
+        Broadcaster.broadcast(newResult);
     }
 
     @Override

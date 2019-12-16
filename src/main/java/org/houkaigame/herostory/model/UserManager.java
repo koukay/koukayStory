@@ -11,7 +11,7 @@ public final class UserManager {
     /**
      * 用户字典
      */
-    static  public   final Map<Integer, User> _userMap=new HashMap<>();
+    static private final Map<Integer, User> _userMap = new HashMap<>();
 
     /**
      * 私有化类默认构造器
@@ -22,10 +22,12 @@ public final class UserManager {
     /**
      * 添加用户
      *
-     * @param user 新用户
+     * @param newUser 新用户
      */
-    static  public void addUser(User user){
-        if (null !=user) _userMap.put(user.userId, user);
+    static public void addUser(User newUser) {
+        if (null != newUser) {
+            _userMap.put(newUser.userId, newUser);
+        }
     }
 
     /**

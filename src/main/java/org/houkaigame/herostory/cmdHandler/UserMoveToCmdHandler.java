@@ -1,10 +1,9 @@
 package org.houkaigame.herostory.cmdHandler;
 
-import com.google.protobuf.GeneratedMessageV3;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.AttributeKey;
 
-import org.houkaigame.herostory.Broadcast;
+import org.houkaigame.herostory.Broadcaster;
 import org.houkaigame.herostory.model.MoveState;
 import org.houkaigame.herostory.model.User;
 import org.houkaigame.herostory.model.UserManager;
@@ -48,6 +47,6 @@ public class UserMoveToCmdHandler implements ICmdHandler<GameMsgProtocol.UserMov
         resultBuilder.setMoveToPosY(mvState.toPosY);
         resultBuilder.setMoveStartTime(mvState.startTime);
         GameMsgProtocol.UserMoveToResult build = resultBuilder.build();
-        Broadcast.broadcast(build);
+        Broadcaster.broadcast(build);
     }
 }

@@ -3,7 +3,7 @@ package org.houkaigame.herostory.cmdHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.AttributeKey;
 
-import org.houkaigame.herostory.Broadcast;
+import org.houkaigame.herostory.Broadcaster;
 import org.houkaigame.herostory.model.User;
 import org.houkaigame.herostory.model.UserManager;
 import org.houkaigame.herostory.msg.GameMsgProtocol;
@@ -34,7 +34,7 @@ public class UserEntryCmdHandler implements ICmdHandler<GameMsgProtocol.UserEntr
         ctx.channel().attr(AttributeKey.valueOf("userId")).set(userId);
         //构建结果并发送
         GameMsgProtocol.UserEntryResult newResult = resultBuilder.build();
-        Broadcast.broadcast(newResult);
+        Broadcaster.broadcast(newResult);
     }
 
 

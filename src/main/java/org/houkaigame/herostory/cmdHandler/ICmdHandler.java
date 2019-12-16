@@ -10,8 +10,9 @@ import io.netty.channel.ChannelHandlerContext;
 public interface ICmdHandler<TCmd extends GeneratedMessageV3> {
     /**
      * 处理指令
-     * @param ctx
-     * @param cmd
+     *
+     * @param ctx 客户端信道处理器上下文
+     * @param cmd 指令
      */
     void handle(ChannelHandlerContext ctx, TCmd cmd);
 }

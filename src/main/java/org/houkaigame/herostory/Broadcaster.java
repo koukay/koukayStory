@@ -5,10 +5,10 @@ import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.util.concurrent.GlobalEventExecutor;
 
-public final class Broadcast {
+public final class Broadcaster {
     //客户端信道数组,一定要使用static,否则无发实现群发
     static  private final ChannelGroup _channelGroup = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
-    private Broadcast(){
+    private Broadcaster(){
 
     }
 
@@ -33,6 +33,7 @@ public final class Broadcast {
      * @param msg
      */
     static public void broadcast(Object msg){
-        if (null == msg) _channelGroup.writeAndFlush(msg);
+        if (null == msg)  return;
+        _channelGroup.writeAndFlush(msg);
     }
 }
