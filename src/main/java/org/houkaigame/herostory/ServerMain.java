@@ -21,7 +21,7 @@ public class ServerMain {
     public static void main(String[] args) {
         CmdHandlerFactory.init();
         GameMsgRecoginizer.init();
-
+        MySqlSessionFactory.init();
         //处理客户端连接线程池
         EventLoopGroup bossGroup = new NioEventLoopGroup();// 拉客的, 也就是故事中的美女
         //处理客户端连接线程池
