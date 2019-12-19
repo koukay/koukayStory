@@ -7,7 +7,6 @@ import org.houkaigame.herostory.cmdHandler.ICmdHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -55,9 +54,8 @@ public class MainThreadProcessor {
         Class<?> msgClazz = msg.getClass();
 
         LOGGER.info(
-                "收到客户端消息, msgClazz = {}, msg = {}",
-                msgClazz.getName(),
-                msg
+                "收到客户端消息, msgClazz = {}",
+                msgClazz.getName()
         );
         _es.submit(()->{
             // 获取指令处理器
@@ -74,6 +72,14 @@ public class MainThreadProcessor {
             // 处理指令
             cmdHandler.handle(ctx, cast(msg));
         });
+    }
+
+    /**
+     * 处理消息对象
+     * @param r Runnable
+     */
+    public void process(Runnable r){
+        if (null != r)_es.submit(r);
     }
     /**
      * 转型消息对象
