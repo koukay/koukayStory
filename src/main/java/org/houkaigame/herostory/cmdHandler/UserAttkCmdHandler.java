@@ -5,6 +5,8 @@ import io.netty.util.AttributeKey;
 import org.houkaigame.herostory.Broadcaster;
 import org.houkaigame.herostory.model.User;
 import org.houkaigame.herostory.model.UserManager;
+import org.houkaigame.herostory.mq.MQProducer;
+import org.houkaigame.herostory.mq.VictorMsg;
 import org.houkaigame.herostory.msg.GameMsgProtocol;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -67,6 +69,16 @@ public class UserAttkCmdHandler implements ICmdHandler<GameMsgProtocol.UserAttkC
         if (targetUser.currHp <= 0) {
             // 广播死亡消息
             broadcastDie(targetUserId);
+            if (!targetUser.died){
+                //设置死亡标志
+                targetUser.died=true;
+
+                // 发送消息到 MQ
+                VictorMsg mqMsg = new VictorMsg();
+                mqMsg.winnerId = attkUserId;
+                mqMsg.loserId = targetUserId;
+                MQProducer.sendMsg("Victor", mqMsg);
+            }
         }
     }
 

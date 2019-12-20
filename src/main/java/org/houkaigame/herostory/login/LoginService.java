@@ -1,13 +1,16 @@
 package org.houkaigame.herostory.login;
 
+import com.alibaba.fastjson.JSONObject;
 import org.apache.ibatis.session.SqlSession;
 import org.houkaigame.herostory.MySqlSessionFactory;
 import org.houkaigame.herostory.async.AsyncOperationProcessor;
 import org.houkaigame.herostory.async.IAsyncOperation;
 import org.houkaigame.herostory.login.db.IUserDao;
 import org.houkaigame.herostory.login.db.UserEntity;
+import org.houkaigame.herostory.util.RedisUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import redis.clients.jedis.Jedis;
 
 import java.util.function.Function;
 
@@ -67,6 +70,29 @@ public class LoginService {
         AsyncOperationProcessor.getInstance().process(asyncOp);
     }
 
+    /**
+     * 更新redis中的用户基本信息
+     * @param userEntity  用户实体
+     */
+    private  void  updateUserBasicInfoInRedis(UserEntity userEntity){
+        if (null ==userEntity || userEntity.userId<=0) return;
+
+        try (Jedis redis = RedisUtil.getJedis()){
+            //获取用户id
+            int userId = userEntity.userId;
+
+            //创建json对象
+            JSONObject jsonObj = new JSONObject();
+            jsonObj.put("userId",userId);
+            jsonObj.put("userName",userEntity.userName);
+            jsonObj.put("heroAvatar", userEntity.heroAvatar);
+
+            //更新redis数据
+            redis.hset("User_" + userId, "BasicInfo", jsonObj.toJSONString());
+        }catch (Exception e){
+            LOGGER.error(e.getMessage(),e);
+        }
+    }
     /**
      * 异步方式获取用户
      */
@@ -150,6 +176,9 @@ public class LoginService {
                 }
 
                 _userEntity = userEntity;
+
+                // 更新 Redis 中的用户基本信息
+                LoginService.getInstance().updateUserBasicInfoInRedis(userEntity);
             } catch (Exception ex) {
                 LOGGER.error(ex.getMessage(), ex);
             }

@@ -13,6 +13,8 @@ import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 
 import org.houkaigame.herostory.cmdHandler.CmdHandlerFactory;
 import org.houkaigame.herostory.cmdHandler.UserAttkCmdHandler;
+import org.houkaigame.herostory.mq.MQProducer;
+import org.houkaigame.herostory.util.RedisUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,6 +24,8 @@ public class ServerMain {
         CmdHandlerFactory.init();
         GameMsgRecoginizer.init();
         MySqlSessionFactory.init();
+        RedisUtil.init();
+        MQProducer.init();
         //处理客户端连接线程池
         EventLoopGroup bossGroup = new NioEventLoopGroup();// 拉客的, 也就是故事中的美女
         //处理客户端连接线程池
